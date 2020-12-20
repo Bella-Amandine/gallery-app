@@ -22,5 +22,32 @@ class Image(models.Model):
     category = models.ForeignKey(Category)
     location = models.ForeignKey(Location)
 
+    def save_image(self):
+        self.save()
+
+    @classmethod
+    def delete_image(cls, image_id):
+        cls.objects.filter(id = image_id).delete()
+
+    @classmethod
+    def update_image(cls, image_id, image_name):
+        cls.objects.filter(id = image_id).update(image_name = image_name)
+
+    @classmethod
+    def get_image_by_id(cls, image_id):
+        found_image = cls.objects.get(pk = image_id)
+        return found_image
+
+    @classmethod
+    def search_image(cls, category_id):
+        images_found = cls.objects.filter(category_id = category_id)
+        return images_found
+
+    @classmethod
+    def filter_by_location(cls, location_id):
+        images_found = cls.objects.filter(location_id = location_id)
+        return images_found
+    
+
     def __str__(self):
         return self.image_name
