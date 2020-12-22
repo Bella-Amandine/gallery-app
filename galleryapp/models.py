@@ -33,6 +33,27 @@ class Category(models.Model):
 class Location(models.Model):
     location_name = models.CharField(max_length = 30)
 
+    def save_location(self):
+        self.save()
+
+    @classmethod
+    def delete_location(cls, loc_id):
+        cls.objects.filter(id = loc_id).delete()
+
+    @classmethod
+    def update_location(cls, loc_id, loc_name):
+        cls.objects.filter(id = loc_id).update(location_name = loc_name)
+
+    @classmethod
+    def get_location_by_id(cls, loc_id):
+        found_location = cls.objects.get(pk = loc_id)
+        return found_location
+
+    @classmethod
+    def get_all_location(cls):
+        found_locations = cls.objects.all()
+        return found_locations
+
     def __str__(self):
         return self.location_name
 
