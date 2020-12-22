@@ -26,12 +26,6 @@ class Category(models.Model):
         found_categories = cls.objects.all()
         return found_categories
 
-    @classmethod
-    def search_images_by_category(cls, category_name):
-        categories_found = cls.objects.filter(category_name__icontains = category_name)
-        print(categories_found.image)
-        return categories_found
-
     def __str__(self):
         return self.category_name
 

@@ -55,3 +55,31 @@ class ImageTestCase(TestCase):
         self.new_image.save_image()
         image_found = Image.filter_by_location(self.new_location.id)
         self.assertTrue(len(image_found) > 0)
+
+
+class CategoryTestCase(TestCase):
+
+    #Set up method
+    def setUp(self):
+        self.new_category = Category(category_name = 'travel', category_description = 'bla blah')
+    
+    def tearDown(self):
+        Category.objects.all().delete()
+        Image.objects.all().delete()
+
+    # Testing Save Method
+    def test_save_category_method(self):
+        self.new_category.save_category()
+        cats = Category.objects.all()
+        self.assertTrue(len(cats) > 0)
+
+
+    def test_get_all_category_method(self):
+        self.new_category.save_category()
+        cats = Category.get_all_category()
+        self.assertTrue(len(cats) > 0)
+
+    def test_get_category_by_category_method(self):
+        self.new_category.save_category()
+        cats = Category.get_category_by_id(self.new_category.id)
+        self.assertEquals(self.new_category.category_name, 'travel')
