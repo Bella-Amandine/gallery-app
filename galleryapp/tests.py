@@ -65,7 +65,6 @@ class CategoryTestCase(TestCase):
     
     def tearDown(self):
         Category.objects.all().delete()
-        Image.objects.all().delete()
 
     # Testing Save Method
     def test_save_category_method(self):
@@ -83,3 +82,29 @@ class CategoryTestCase(TestCase):
         self.new_category.save_category()
         cats = Category.get_category_by_id(self.new_category.id)
         self.assertEquals(self.new_category.category_name, 'travel')
+
+class LocationTestCase(TestCase):
+
+    #Set up method
+    def setUp(self):
+        self.new_location = Location(location_name = 'Kigali')
+    
+    def tearDown(self):
+        Location.objects.all().delete()
+
+    # Testing Save Method
+    def test_save_location_method(self):
+        self.new_location.save_location()
+        locs = Location.objects.all()
+        self.assertTrue(len(locs) > 0)
+
+
+    def test_get_all_location_method(self):
+        self.new_location.save_location()
+        locs = Location.get_all_location()
+        self.assertTrue(len(locs) > 0)
+
+    def test_get_location_by_id_method(self):
+        self.new_location.save_location()
+        locs = Location.get_location_by_id(self.new_location.id)
+        self.assertEquals(self.new_location.location_name, 'Kigali')
