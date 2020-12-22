@@ -5,6 +5,33 @@ class Category(models.Model):
     category_name = models.CharField(max_length =30)
     category_description = models.TextField()
 
+    def save_category(self):
+        self.save()
+
+    @classmethod
+    def delete_category(cls, cat_id):
+        cls.objects.filter(id = cat_id).delete()
+
+    @classmethod
+    def update_category(cls, cat_id, cat_name):
+        cls.objects.filter(id = cat_id).update(category_name = cat_name)
+
+    @classmethod
+    def get_category_by_id(cls, cat_id):
+        found_category = cls.objects.get(pk = cat_id)
+        return found_category
+
+    @classmethod
+    def get_all_category(cls):
+        found_categories = cls.objects.all()
+        return found_categories
+
+    @classmethod
+    def search_images_by_category(cls, category_name):
+        categories_found = cls.objects.filter(category_name__icontains = category_name)
+        print(categories_found.image)
+        return categories_found
+
     def __str__(self):
         return self.category_name
 
