@@ -30,11 +30,21 @@ class ImageTestCase(TestCase):
         images = Image.objects.all()
         self.assertTrue(len(images) > 0)
 
-    # def test_delete_image(self):
-    #     self.new_image.save_image()
-    #     self.new_image.delete(self.new_image.id)
-    #     images = Image.objects.all()
-    #     self.assertTrue(len(images) == 0)
+    def test_get_image_by_id(self):
+        self.new_image.save_image()
+        image_found = Image.get_image_by_id(self.new_image.id)
+        self.assertEquals(image_found.image_name, "travel")
+
+    def test_get_all_image(self):
+        self.new_image.save_image()
+        image_found = Image.get_all_image()
+        self.assertTrue(len(image_found) > 0)
+
+    def test_delete_image(self):
+        self.new_image.save_image()
+        Image.delete_image(self.new_image.id)
+        images = Image.objects.all()
+        self.assertTrue(len(images) == 0)
 
     def test_search_image_method(self):
         self.new_image.save_image()
