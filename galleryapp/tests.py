@@ -48,12 +48,12 @@ class ImageTestCase(TestCase):
 
     def test_search_image_method(self):
         self.new_image.save_image()
-        image_found = Image.search_image(self.new_category.id)
+        image_found = Image.search_image('trav')
         self.assertTrue(len(image_found) > 0)
 
     def test_filter_by_location_method(self):
         self.new_image.save_image()
-        image_found = Image.filter_by_location(self.new_location.id)
+        image_found = Image.filter_by_location('Kigali')
         self.assertTrue(len(image_found) > 0)
 
 
