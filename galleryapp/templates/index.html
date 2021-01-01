@@ -1,11 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% if images %}
-        {% for image in images %}
-            <h1>{{image.image_name}}</h1>
-            <img src="{{image.image.url}}" alt="" class="img-fluid">
-        {% endfor %}
-    {% else %}
-        <h1>No image available</h1>
-    {% endif %}
+<header>
+    <div class="container h-100">
+        <div class="row justify-content-center h-100">
+            <div class="col-md-6 align-self-center">
+                <h1 class="text-center">Hello</h1>
+            </div>
+        </div>
+    </div>
+</header>
+<section id="location-section">
+    <div class="container">
+        <h4 class="p-4 text-muted">Find Images According to Location</h4>
+        <div class="row">
+            {% if locations %}
+                {% for loc in locations%}
+                <div class="col-md-3">
+                    <div class="card loc-card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <div class="title-center">
+                                    <h3 class="text-center">{{loc.location_name}}</h3>
+                                </div>
+                            </div>
+                            <p class="float-right">
+                                <a href="#" class="btn btn-success"><i class="fal fa-arrow-right"></i> go to</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info">There is no image available for now</div>
+            {% endif %}
+            
+        </div>
+    </div>
+</section>
 {% endblock %}

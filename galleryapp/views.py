@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Image
+from .models import Image, Category, Location
 
 # Create your views here.
 def index(request):
-    all_images = Image.get_all_image
-    return render(request, 'index.html', {"images": all_images})
+    all_locations = Location.get_all_location()
+    return render(request, 'index.html', {"locations": all_locations})
+
+def get_all_images(request):
+    all_images = Image.get_all_image()
+    return render(request, 'all-images/all-images.html', {"images": all_images})
 
 def search_by_category_results(request):
 

@@ -1,4 +1,50 @@
 h1
 {
-    color: green;
+    color: blue;
+}
+nav
+{
+    border-bottom: 3px solid green;
+}
+header 
+{
+    height: 50vh;
+    background-image: linear-gradient(to right, rgba(57, 129, 79, 0), rgb(90, 138, 97));
+}
+#location-section
+{
+    background: rgba(143, 142, 142, 0.1);
+    height: 60vh;
+    overflow: auto;
+}
+.loc-card
+{
+    height: 30vh;
+    background-image: url('https://images.unsplash.com/photo-1560239385-429af6050f30?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=100&q=80');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.loc-card:hover
+{
+    box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
+    height: 31vh;
+}
+.title-center
+{
+    line-height: 20vh;
+    height: 20vh;
+    text-align: center;
+}
+.title-center h3
+{
+    line-height: 1.5;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 50px;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
 }

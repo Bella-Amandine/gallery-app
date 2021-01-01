@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-5 bg-light" id="galery">
+    <div class="container">
+        <h1 class="text-center">Photo Gallery</h1>
+        <p class="text-center">Check out our photos</p>
+        <div class="row mb-4">
+            {% if images %}
+                {% for image in images %}
+                <div class="col-md-4">
+                    <div data-toggle="modal" data-target="#singleImageModal">
+                        <img
+                            src="{{image.image.url}}"
+                            alt=""
+                            class="img-fluid"
+                        />
+                        <div class="desc">{{image.category.category_name}}</div>
+                    </div>
+                </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="singleImageModal" role="dialog" >
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card">  
+                                        <img
+                                            src="{{image.image.url}}"
+                                            alt=""
+                                            class="img-fluid"
+                                        />
+                                        <div class="pt-3">
+                                            <p>
+                                                <span class="text-muted">Category</span> {{image.category.category_name}} <br>
+                                                <span class="text-muted">Image Name : </span> {{image.image_name}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Copy Image Link</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info">No Image is available for now.</div>
+            {% endif %}
+           
+        </div>
+    </div>
+
+</section>
+
+
+{% endblock %}
