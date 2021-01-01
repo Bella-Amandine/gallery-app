@@ -2,7 +2,7 @@
 {% block content %}
 <section class="py-5 bg-light" id="galery">
     <div class="container">
-        <h1 class="text-center">Photo Gallery</h1>
+        <h1 class="text-center">Photos Found</h1>
         <p class="text-center">Check out our photos</p>
         <div class="row mb-4">
             {% if images %}
@@ -15,6 +15,7 @@
                             class="img-fluid"
                         />
                         <div class="desc">{{image.category.category_name}}</div>
+                        <div class="desc">{{image.location.location_name}}</div>
                     </div>
                 </div>
 
@@ -43,7 +44,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="{% url 'copy_image_link' image.id%}" class="btn btn-secondary" >Copy Image Link</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Copy Image Link</button>
                                 </div>
                             </div>
                         </div>
